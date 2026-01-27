@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Saathi - Smart Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for "Premium" feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SECTION 1: WELCOME & SETUP -->
+    <div id="setup-screen" class="container">
+        <header class="hero">
+            <h1>Study Saathi 🎓</h1>
+            <p>Your AI-powered study companion.</p>
+        </header>
+
+        <div class="card setup-card">
+            <h2>Let's get started!</h2>
+            <div class="form-group">
+                <label for="student-name">Your Name</label>
+                <input type="text" id="student-name" placeholder="e.g. Rahul">
+            </div>
+
+            <div class="form-group">
+                <label>Preferred Language</label>
+                <div class="radio-group">
+                    <label class="radio-card">
+                        <input type="radio" name="language" value="english" checked>
+                        <span>English 🇬🇧</span>
+                    </label>
+                    <label class="radio-card">
+                        <input type="radio" name="language" value="hinglish">
+                        <span>Hinglish 🇮🇳</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn-primary">Start Studying 🚀</button>
+        </div>
+    </div>
+
+    <!-- SECTION 2: DASHBOARD (Hidden initially) -->
+    <div id="dashboard-screen" class="container hidden">
+        <header class="dashboard-header">
+            <div>
+                <h1 id="greeting">Hello! 👋</h1>
+                <p id="date-display">Today's Focus</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item" title="Current Daily Streak">
+                    <span class="stat-icon">🔥</span>
+                    <span id="streak-count">0</span>
+                </div>
+                <div class="stat-item" title="Today's Progress">
+                    <span class="stat-icon">📊</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+            </div>
+            <button id="btn-logout" class="btn-text">Switch User</button>
+        </header>
+
+        <!-- AI MOTIVATION -->
+        <section class="motivation-section">
+            <div class="card motivation-card">
+                <div class="card-header">
+                    <h3>💡 Motivation</h3>
+                    <span class="tag ai-tag">AI</span>
+                </div>
+                <p id="motivation-text" class="loading-text">AI soch raha hai... 🤔</p>
+            </div>
+        </section>
+
+        <!-- STUDY PLAN -->
+        <section class="plan-section">
+            <!-- SYLLABUS UPLOAD CARD -->
+            <div class="card upload-card" style="border-left: 5px solid #6c63ff;">
+                <div class="card-header">
+                    <h3>📚 Upload Syllabus</h3>
+                    <span class="tag">New</span>
+                </div>
+                <div class="form-group">
+                    <label for="syllabus-file">Upload PDF or Word (Docx)</label>
+                    <input type="file" id="syllabus-file" accept=".pdf,.docx">
+                </div>
+                <div class="form-group">
+                    <label>Daily Study Hours</label>
+                    <input type="number" id="user-daily-hours" value="6" min="1" max="16">
+                </div>
+                <button id="btn-process-syllabus" class="btn-primary btn-sm">Generate Schedule 📅</button>
+            </div>
+
+            <!-- INTERACTIVE TUTOR CARD -->
+            <div class="card interactive-card">
+                <div class="card-header">
+                    <h3>🧠 AI Interactive Tutor</h3>
+                    <span class="tag ai-tag">Voice Enabled 🎙️</span>
+                </div>
+
+                <div id="tutor-chat-area" class="chat-area"
+                    style="max-height: 200px; overflow-y: auto; margin-bottom: 10px; background: #f8f9fa; padding: 10px; border-radius: 8px;">
+                    <p class="ai-msg">Hi! I'm your AI Tutor. Click 'Start Session' to learn interactively.</p>
+                </div>
+
+                <div class="tutor-controls" style="display: flex; gap: 10px;">
+                    <button id="btn-start-tutor" class="btn-primary btn-sm">Start Session</button>
+                    <button id="btn-mic-toggle" class="btn-secondary btn-sm" disabled>🎤 Speak</button>
+                </div>
+
+                <!-- Fallback Text Input -->
+                <div class="form-group" style="margin-top: 10px;">
+                    <input type="text" id="tutor-text-input" placeholder="Type answer if voice fails..."
+                        style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+            </div>
+
+            <!-- DOUBT SOLVER CARD -->
+            <div class="card doubt-card" style="border-right: 5px solid #ff6b6b;">
+                <div class="card-header">
+                    <h3>❓ Instant Doubt Solver</h3>
+                    <span class="tag doubt-tag">Socratic</span>
+                </div>
+                <div class="form-group">
+                    <textarea id="doubt-input" placeholder="Ask any study doubt... AI will guide you to the answer!"
+                        rows="3"
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;"></textarea>
+                </div>
+                <button id="btn-solve-doubt" class="btn-primary btn-sm" style="background: #ff6b6b;">Solve Doubt
+                    💡</button>
+                <div id="doubt-response" class="hidden"
+                    style="margin-top: 15px; padding: 10px; background: #fff5f5; border-radius: 8px; border-left: 3px solid #ff6b6b;">
+                    <p id="doubt-response-text" style="font-size: 0.95rem; line-height: 1.5;"></p>
+                </div>
+            </div>
+
+            <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
+                <h2 id="plan-section-title">Today's Plan</h2>
+                <div class="view-controls">
+                    <button id="btn-view-daily" class="btn-primary btn-sm">Today</button>
+                    <button id="btn-view-overall" class="btn-secondary btn-sm" style="opacity:0.6">Overall
+                        Schedule</button>
+                    <button id="btn-generate-plan" class="btn-secondary btn-sm">Auto-Generate</button>
+                </div>
+            </div>
+
+            <!-- AI EXPLANATION -->
+            <div class="card explanation-card">
+                <div class="card-header">
+                    <h3>📋 Plan Overview</h3>
+                    <span class="tag ai-tag">AI</span>
+                </div>
+                <p id="explanation-text" class="loading-text">AI plan samajh raha hai... 🤔</p>
+            </div>
+
+            <!-- PLAN TABLE -->
+            <div class="card plan-detail-card">
+                <div id="plan-container">
+                    <p class="empty-state">No plan generated for today yet.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
