@@ -1,0 +1,49 @@
+{
+  "subjects": [
+    {
+      "name": "Data Structures and Algorithms",
+      "exam_date": "2024-12-15",
+      "difficulty": "hard",
+      "topics": ["Trees", "Graphs", "Dynamic Programming", "Sorting Algorithms"]
+    },
+    {
+      "name": "Database Management Systems",
+      "exam_date": "2024-12-20",
+      "difficulty": "medium",
+      "topics": ["SQL Queries", "Normalization", "Transactions"]
+    },
+    {
+      "name": "Operating Systems",
+      "exam_date": "2024-12-18",
+      "difficulty": "hard",
+      "topics": ["Process Scheduling", "Memory Management", "File Systems"]
+    },
+    {
+      "name": "Computer Networks",
+      "exam_date": "2024-12-22",
+      "difficulty": "medium",
+      "topics": ["TCP/IP", "Routing Protocols", "Network Security"]
+    },
+    {
+      "name": "Software Engineering",
+      "exam_date": "2024-12-25",
+      "difficulty": "easy",
+      "topics": ["SDLC", "Design Patterns", "Testing"]
+    },
+    {
+      "name": "Machine Learning",
+      "exam_date": "2024-12-28",
+      "difficulty": "hard",
+      "topics": ["Neural Networks", "Supervised Learning", "Unsupervised Learning"]
+    }
+  ],
+  "daily_hours": 8.0,
+  "free_time_slots": [
+    {"start": "07:00", "end": "09:00", "label": "Early Morning"},
+    {"start": "10:00", "end": "12:00", "label": "Late Morning"},
+    {"start": "15:00", "end": "17:00", "label": "Afternoon"},
+    {"start": "18:00", "end": "20:00", "label": "Evening"},
+    {"start": "21:00", "end": "23:00", "label": "Night Study"}
+  ],
+  "date": "2024-12-01"
+}
