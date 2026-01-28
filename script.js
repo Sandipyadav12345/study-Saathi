@@ -1,4 +1,4 @@
-const API_BASE = "http://study-saathi-3tax.onrender.com/api";
+const API_BASE = "https://study-saathi-3tax.onrender.com/api";
 
 // DOM Elements
 const setupScreen = document.getElementById('setup-screen');
@@ -562,4 +562,5 @@ window.completeTask = async function (taskId) {
     loadStats(); // Update stats after completing task
     loadMotivation(); // Refresh motivation as progress changed
 };
+
 
